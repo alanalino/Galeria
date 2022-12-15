@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="lino.alana.galeria">
 
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Galeria"
         tools:targetApi="31">
+
+        <provider
+            android:authorities="lino.alana.galeria.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths">
+            </meta-data>
+        </provider>
+
 
         <activity
             android:name=".PhotoActivity"
